@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="hostel_facilities_tree_form" model="ir.ui.view">
+        <field name="name">view.facilities</field>
+        <field name="model">hostel.facilities</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="charge"/>
+            </tree>
+        </field>
+    </record>
+    <record id="hostel_facilities_view_form" model="ir.ui.view">
+        <field name="name">form.facilities</field>
+        <field name="model">hostel.facilities</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" class="oe_inline"/>
+                        <field name="charge" class="oe_inline"/>
+                        <field name="active" invisible="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="ir_filters_facilities_view_search" model="ir.ui.view">
+        <field name="model">hostel.facilities</field>
+        <field name="arch" type="xml">
+            <search>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+            </search>
+        </field>
+    </record>
+    <record id="action_facilities" model="ir.actions.act_window">
+        <field name="name">Facilities</field>
+        <field name="res_model">hostel.facilities</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_facilities" action="action_facilities"/>
+</odoo>

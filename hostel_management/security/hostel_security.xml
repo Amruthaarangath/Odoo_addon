@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.rule" id="record_not_shared_multi_company_rule">
+            <field name="name">Non Shared Records:hostel management model room</field>
+            <field name="model_id" ref="hostel_management.model_hostel_room_management"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record model="ir.rule" id="record_not_shared_multi_company_rule1">
+            <field name="name">Non Shared Records:hostel management model student</field>
+            <field name="model_id" ref="hostel_management.model_hostel_student"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <record model="ir.rule" id="record_not_shared_multi_company_rule4">
+            <field name="name">Non Shared Records:hostel management</field>
+            <field name="model_id" ref="hostel_management.model_hostel_cleaning_service"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+
+        <!--        warden rules-->
+
+        <record id="hostel_management_warden" model="ir.rule">
+            <field name="name">warden can create, edit, update, and remove student</field>
+            <field ref="hostel_management.model_hostel_student" name="model_id"/>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_warden_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="hostel_room_rule_warden" model="ir.rule">
+            <field name="name">warden can create, edit, update, and remove room</field>
+            <field ref="hostel_management.model_hostel_room_management" name="model_id"/>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_warden_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="hostel_leave_approval_warden" model="ir.rule">
+            <field name="name">warden can create, edit, update, and remove student</field>
+            <field ref="hostel_management.model_leave_request" name="model_id"/>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_warden_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="hostel_facilities_rule_warden" model="ir.rule">
+            <field name="name">warden can create, edit, update, and remove facilities</field>
+            <field ref="hostel_management.model_hostel_facilities" name="model_id"/>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_warden_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+
+        </record>
+
+        <record id="hostel_cleaning_rule_warden" model="ir.rule">
+            <field name="name">warden can see cleaning request</field>
+            <field ref="hostel_management.model_hostel_cleaning_service" name="model_id"/>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_warden_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="hostel_report_student" model="ir.rule">
+            <field name="name">warden can create report</field>
+            <field ref="hostel_management.model_student_report" name="model_id"/>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_warden_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+         <record id="hostel_report_leave" model="ir.rule">
+            <field name="name">warden can create leave report</field>
+            <field ref="hostel_management.model_leave_report" name="model_id"/>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_warden_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!--        student rules-->
+
+        <record id="hostel_student_access" model="ir.rule">
+            <field name="name">student can only see their details</field>
+            <field ref="hostel_management.model_hostel_student" name="model_id"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_student_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="hostel_student_room_access" model="ir.rule">
+            <field name="name">student can only see their details</field>
+            <field ref="hostel_management.model_hostel_room_management" name="model_id"/>
+            <field name="domain_force">[('student_ids.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_student_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="hostel_student_leave_request" model="ir.rule">
+            <field name="name">student can create leave request</field>
+            <field ref="hostel_management.model_leave_request" name="model_id"/>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_student_group'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!--        staff rules-->
+        <record id="hostel_staff_request" model="ir.rule">
+            <field name="name">staff can see their own requests</field>
+            <field ref="hostel_management.model_hostel_cleaning_service" name="model_id"/>
+            <field name="domain_force">[('cleaning_staff_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('hostel_management.hostel_staff_group'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
+</odoo>

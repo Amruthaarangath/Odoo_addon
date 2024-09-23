@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="department_tree" model="ir.ui.view">
+        <field name="name">view.department.tree</field>
+        <field name="model">hospitalmanagement.department</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="department_action" model="ir.actions.act_window">
+            <field name="name">department</field>
+            <field name="res_model">hospitalmanagement.department</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="department_menu_action" action="department_action"/>
+    <menuitem id="deprtment_menu_root" name="Test"></menuitem>
+    <menuitem id="department_first_level_menu" name="First Level">
+    </menuitem>
+
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="hostel_cleaning_room_tree_form" model="ir.ui.view">
+        <field name="name">view.cleaning</field>
+        <field name="model">hostel.cleaning.service</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="room_id"/>
+                <field name="cleaning_staff_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="hostel_cleaning_view_form" model="ir.ui.view">
+        <field name="name">form.cleaning</field>
+        <field name="model">hostel.cleaning.service</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="btn_assign" name="assign_button" string="Assign" type="object"/>
+                    <button id="btn_complete" name="complete_button" string="Complete" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,assigned,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="room_id" class="oe_inline"/>
+                            <field name="cleaning_staff_id" class="oe_inline"/>
+                            <field name="time" widget="float_time" class="oe_inline"/>
+                        </group>
+                        <group>
+                            <field name="company_id" class="oe_inline"/>
+                            <field name="currency_id"/>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="ir_filters_cleaning_view_search" model="ir.ui.view">
+        <field name="model">hostel.cleaning.service</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="0" string="Group By">
+                    <filter name="group_staff" string="Staff" context="{'group_by':'cleaning_staff_id'}"/>
+                </group>
+                <filter string="New" name="state" domain="[('state', '=','new')]"/>
+                <separator/>
+                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
+                <separator/>
+                <filter string="Completed" name="completed" domain="[('state','=','done')]"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_cleaning" model="ir.actions.act_window">
+        <field name="name">Room Cleaning</field>
+        <field name="res_model">hostel.cleaning.service</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

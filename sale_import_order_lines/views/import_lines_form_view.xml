@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <record id="import_lines_view_form" model="ir.ui.view">
+       <field name="name">import.line.view.form</field>
+       <field name="model">sale.xls.wizard</field>
+       <field name="priority" eval="8"/>
+       <field name="arch" type="xml">
+           <form string="Import Lines">
+               <group>
+                   <field name="file" filename="file_name"/>
+               </group>
+               <footer>
+                   <button name="action_send" string="Send" type="object"/>
+               </footer>
+           </form>
+       </field>
+   </record>
+</odoo>

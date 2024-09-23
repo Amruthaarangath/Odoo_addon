@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="hostel_student_information_tree_form" model="ir.ui.view">
+        <field name="name">view.student.info</field>
+        <field name="model">hostel.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="room_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="hostel_student_information_view_form" model="ir.ui.view">
+        <field name="name">student.info.form</field>
+        <field name="model">hostel.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_room_alot" id="action_room_alot" string="Room alot" class="btn-primary"
+                            type="object" context="{'validate_analytic': True}"/>
+                    <button id="vacate_room" name="vacate_room" string="Vacate" type="object"/>
+                    <field name="invoice_status" widget="statusbar" statusbar_visible="pending,done"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <field name="active" invisible='1'/>
+
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button"
+                                type="object"
+                                icon="fa-taxi"
+                                name="action_view_invoices">
+                            <field name="invoice_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <h1>
+                            <field name="sid"/>
+                        </h1>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="room_id"/>
+                            <field name="company_id"/>
+                            <field name="currency_id"/>
+                            <field name="partner_id"/>
+                            <field name="user_id"/>
+                        </group>
+                        <group>
+                            <field name='image' file_name = "file_name" widget="image" class="oe_avatar"/>
+                            <field name="dob"/>
+                            <field name="age"/>
+                            <field name="email"/>
+                            <field name="receive_email"/>
+                            <field name="monthly_amount"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Address">
+                            <group>
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+<!--                                       context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>-->
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country"
+                                           options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                                <field name="state_id" class="o_address_state" placeholder="State"
+                                       options="{'no_open': True, 'no_quick_create': True}"/>
+<!--                                <div name="partner_address_country" class="d-flex justify-content-between">-->
+
+<!--                                </div>-->
+                            </group>
+                        </page>
+                    </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="ir_filters_student_view_search" model="ir.ui.view">
+        <field name="model">hostel.student</field>
+        <field name="arch" type="xml">
+            <search>
+                 <group expand="0" string="Group By">
+                    <filter name="group_room_student" string="Room" context="{'group_by':'room_id'}"/>
+                </group>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+            </search>
+        </field>
+    </record>
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Student Information</field>
+        <field name="res_model">hostel.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

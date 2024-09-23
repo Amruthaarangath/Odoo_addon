@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="bom_tree" model="ir.ui.view">
+        <field name="name">view.bom.tree</field>
+        <field name="model">hospitalmanagement.bom</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="bom_action" model="ir.actions.act_window">
+            <field name="name">bom</field>
+            <field name="res_model">hospitalmanagement.bom</field>
+            <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem id="bom_menu_action" action="bom_action"/>
+    <menuitem id="bom_menu_root" name="Test"></menuitem>
+
+</odoo>

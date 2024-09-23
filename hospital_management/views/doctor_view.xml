@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_doctor" model="ir.ui.view">
+        <field name="name">doctor.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+        <field name="job_id" position="before">
+             <field name="qualification"/>
+             <field name="age"/>
+             <field name="shift"/>
+             <field name="fees"/>
+             </field>
+        </field>
+
+<!--        <field name="job_id" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--        </field>-->
+
+    </record>
+
+    <record id="doctor_action" model="ir.actions.act_window">
+        <field name="name">doctor</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="doctor_menu_action" action="doctor_action"/>
+    <menuitem id="doctor_menu_root" name="test"></menuitem>
+    <menuitem id="doctor_first_level_menu" name="First Level">
+    </menuitem>
+
+</odoo>

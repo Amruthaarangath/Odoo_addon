@@ -1,0 +1,15 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+
+access_room_model,access_room_model,model_hostel_room_management,hostel_management.hostel_warden_group,1,1,1,1
+access_student_model,access_student_model,model_hostel_student,hostel_management.hostel_warden_group,1,1,1,1
+access_facilities_model,access_facilities_model,model_hostel_facilities,hostel_management.hostel_warden_group,1,1,1,1
+access_leave_model,access_leave_model,model_leave_request,hostel_management.hostel_warden_group,1,0,0,1
+access_cleaning_model,access_cleaning_model,model_hostel_cleaning_service,hostel_management.hostel_warden_group,1,1,1,0
+access_student_report,access_student_report,model_student_report,hostel_management.hostel_warden_group,1,1,1,1
+access_leave_report,access_leave_report,model_leave_report,hostel_management.hostel_warden_group,1,1,1,1
+
+access_student_room_model,access_room_model,model_hostel_room_management,hostel_management.hostel_student_group,1,0,0,0
+access_student_student_model,access_student_model,model_hostel_student,hostel_management.hostel_student_group,1,0,0,0
+access_student_leave_model,access_leave_model,model_leave_request,hostel_management.hostel_student_group,1,1,1,0
+
+access_staff_cleaning_model,access_cleaning_model,model_hostel_cleaning_service,hostel_management.hostel_staff_group,1,0,0,0

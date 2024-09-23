@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+           <menuitem id="menu_reception" name="Reception" sequence="1"/>
+           <menuitem id="menu_room" name="Room management" parent="menu_reception" action="action_room_management" sequence="0"/>
+           <menuitem id="menu_student" name="Student Information" parent="menu_reception" action="action_student" sequence="1"/>
+           <menuitem id="menu_report" name="Report" parent="menu_reception" sequence="2"/>
+           <menuitem id="menu_wizard_student_report" name="Student Report" parent="menu_report" action="action_student_wizard"/>
+           <menuitem id="menu_wizard_leave_report" name="Leave request Report" parent="menu_report" action="action_leave_wizard"/>
+           <menuitem id="menu_config" name="Configurations" parent="menu_reception" sequence="3"/>
+           <menuitem id="menu_leave" name="Leave Request" parent="menu_config" action="action_leave"/>
+           <menuitem id="menu_cleaning" name="Room Cleaning" parent="menu_config" action="action_cleaning"/>
+           <menuitem id="menu_facilities" name="Facilities" parent="menu_config" action="action_facilities"/>
+</odoo>

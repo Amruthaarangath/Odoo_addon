@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_leave_request">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <h2>Leave Request Report</h2>
+                    <br></br>
+                    <t t-if="len(report) == 1">
+                        <t t-foreach="report" t-as="main"/>
+                        <p>
+                            Name :
+                            <span t-esc="main.get('name')"/>&#160; &#160; &#160; &#160;
+                            Room :
+                            <span t-esc="main.get('room_number')"/>&#160; &#160; &#160; &#160;
+                            Start Date :
+                            <span t-esc="main.get('leave_date')"/>
+
+                            <table class="table report_border table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="padding: 0px;" class="text-center">
+                                            <h5>
+                                                <b>SL.No</b>
+                                            </h5>
+                                        </th>
+                                        <th style="padding: 0px;" class="text-center">
+                                            <h5>
+                                                <b>Arrival Date</b>
+                                            </h5>
+                                        </th>
+                                        <th style="padding: 0px;" class="text-center">
+                                            <h5>
+                                                <b>Duration</b>
+                                            </h5>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-left">
+                                    <t t-set="i" t-value="1"/>
+                                    <tr t-foreach="report" t-as="main" align="center">
+                                        <td>
+                                            <span t-esc="i"/>
+                                            <t t-set="i" t-value="i+1"/>
+                                        </td>
+                                        <td>
+                                            <span t-out="main.get('arrival_date')"/>
+                                        </td>
+                                        <td>
+                                            <span t-out="main.get('duration')"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                    </t>
+                    <t t-if="len(report) > 1">
+                        <table class="table report_border table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 0px;" class="text-center">
+                                        <h5>
+                                            <b>SL.No</b>
+                                        </h5>
+                                    </th>
+                                    <th style="padding: 0px;" class="text-center">
+                                        <h5>
+                                            <b>Name</b>
+                                        </h5>
+                                    </th>
+                                    <th style="padding: 0px;" class="text-center">
+                                        <h5>
+                                            <b>Room</b>
+                                        </h5>
+                                    </th>
+                                    <th style="padding: 0px;" class="text-center">
+                                        <h5>
+                                            <b>Start date</b>
+                                        </h5>
+                                    </th>
+                                    <th style="padding: 0px;" class="text-center">
+                                        <h5>
+                                            <b>Arrival date</b>
+                                        </h5>
+                                    </th>
+                                    <th style="padding: 0px;" class="text-center">
+                                        <h5>
+                                            <b>Duration</b>
+                                        </h5>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-left">
+                                <t t-set="i" t-value="1"/>
+                                <tr t-foreach="report" t-as="main" align="center">
+                                    <td>
+                                        <span t-esc="i"/>
+                                        <t t-set="i" t-value="i+1"/>
+                                    </td>
+                                    <td>
+                                        <span t-out="main.get('name')"/>
+                                    </td>
+                                    <td>
+                                        <span t-out="main.get('room_number')"/>
+                                    </td>
+                                    <td>
+                                        <span t-out="main.get('leave_date')"/>
+                                    </td>
+                                    <td>
+                                        <span t-out="main.get('arrival_date')"/>
+                                    </td>
+                                    <td>
+                                        <span t-out="main.get('duration')"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="saleDashboard">
+        <div>
+            <h1>Sale Overview</h1>
+            <ChildSaleDashboard/>
+        </div>
+    </t>
+
+    <t t-name="childSaleDashboard">
+        <div class="child_sale d-flex mt-5 w-50 justify-content-between">
+            <input type="text" name="inputbox" t-ref="inputbox" id="inputbox" value=" " class="form-control"/>
+            <button class="oe_stat_button">Click Here!!!</button>
+        </div>
+    </t>
+
+    <t t-inherit="childSaleDashboard" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('child_sale')]" position="inside">
+            <button class="btn btn-secondary btn-sm" t-on-click="onClickRefresh">Refresh</button>
+        </xpath>
+    </t>
+</templates>

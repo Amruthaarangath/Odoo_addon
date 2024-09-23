@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="hostel_room_management_tree_form" model="ir.ui.view">
+        <field name="name">view.room</field>
+        <field name="model">hostel.room.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="room_number"/>
+                <field name="room_type"/>
+                <field name="no_of_beds"/>
+                <field name="state"/>
+                <field name="total_rent"/>
+            </tree>
+        </field>
+    </record>
+    <record id="hostel_room_management_view_form" model="ir.ui.view">
+        <field name="name">room.form</field>
+        <field name="model">hostel.room.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="btn" name="monthly_invoice_button" string="Monthly Invoice" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="cleaning,empty,partial,full"/>
+                </header>
+                <sheet>
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button"
+                                type="object"
+                                icon="fa-star"
+                                name="action_view_post_invoices">
+                            <field name="post_invoice_count" widget="statinfo"/>
+                        </button>
+                        <button class="oe_stat_button"
+                                type="object"
+                                icon="fa-star"
+                                name="action_view_draft_invoices">
+                            <field name="draft_invoice_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <h1>
+                            <field name="room_number"/>
+                        </h1>
+                        <group>
+                            <field name="room_type"/>
+                            <field name="no_of_beds"/>
+                            <field name="total_rent"/>
+                            <field name="pending_amount"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="company_id"/>
+                            <field name="currency_id"/>
+                            <field name="rent" widget="monetary"/>
+                            <field name="facility_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="students">
+                            <tree string="Students" editable="bottom">
+                                <field name="student_ids"/>
+                            </tree>
+                        </page>
+                    </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="ir_filters_room_view_search" model="ir.ui.view">
+        <field name="model">hostel.room.management</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="0" string="Group By">
+                    <filter name="group_employee" string="Bed count" context="{'group_by':'no_of_beds'}"/>
+                </group>
+<!--                <filter string="available rooms" name="state" domain="[('state', '=',['partial','empty'])]"/>-->
+<!--                <separator/>-->
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+            </search>
+        </field>
+    </record>
+    <record id="action_room_management" model="ir.actions.act_window">
+        <field name="name">Room</field>
+        <field name="res_model">hostel.room.management</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_category_user_type">
+            <field name="name">User types</field>
+            <field name="description">Helps you manage users.</field>
+            <field name="sequence">9</field>
+        </record>
+
+        <record id="hostel_staff_group" model="res.groups">
+            <field name="name">Staff</field>
+            <field name="category_id" ref="module_category_user_type"/>
+        </record>
+
+        <record id="hostel_student_group" model="res.groups">
+            <field name="name">Student</field>
+            <field name="category_id" ref="module_category_user_type"/>
+        </record>
+
+        <record id="hostel_warden_group" model="res.groups">
+            <field name="name">Warden</field>
+            <field name="category_id" ref="module_category_user_type"/>
+            <field name="implied_ids" eval="[(4, ref('hostel_student_group'))]"/>
+        </record>
+    </data>
+</odoo>
