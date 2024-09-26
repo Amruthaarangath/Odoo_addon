@@ -10,6 +10,7 @@ class SaleOrder(models.Model):
 
     @api.constrains('discount')
     def _check_monthly_discount(self):
+        print('hi')
         today = date.today()
         month_start = date.today().replace(day=1),
         order_lines = sum(self.search([("order_id.partner_id", "=", self.order_id.partner_id.id),
