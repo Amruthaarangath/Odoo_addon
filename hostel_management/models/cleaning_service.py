@@ -33,4 +33,4 @@ class CleaningService(models.Model):
     def complete_button(self):
         """complete button"""
         self.state = "done"
-        self.room_id.change_state()
+        self.room_id._compute_change_state()

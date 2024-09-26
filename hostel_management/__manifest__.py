@@ -30,6 +30,10 @@
         'wizard/student_report_view.xml',
         'wizard/leave_report_view.xml',
         'views/reception_view.xml',
+        'views/snippet.xml',
+        'views/room_snippet_template.xml',
+        # 'views/home_template.xml',
+        'views/room_details_snippet_view.xml',
         'report/student_report.xml',
         'report/leave_report.xml',
         'report/ir_actions_report.xml',
@@ -40,7 +44,9 @@
             'hostel_management/static/src/js/action_manager.js'
         ],
         'web.assets_frontend': [
-            'hostel_management/static/src/js/student_form.js'
+            # 'hostel_management/static/src/js/student_form.js',
+            'hostel_management/static/src/xml/room_templates.xml',
+            'hostel_management/static/src/js/room_snippet.js'
         ],
     },
         'license': 'LGPL-3',

@@ -3,7 +3,10 @@
     <record id="action_sale_dashboard" model="ir.actions.client">
             <field name="name">Sale Overview</field>
             <field name="tag">sale_dashboard</field>
+        <button id="action_button" name="action_button" type="object">
+        </button>
         </record>
+
 
     <menuitem id="sale_dashboard" name="Sale Dashboard" parent="sale.sale_menu_root" action="action_sale_dashboard"/>
 </odoo>

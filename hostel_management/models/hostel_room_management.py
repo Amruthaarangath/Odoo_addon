@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from docutils.nodes import pending
 
 from odoo import fields, models, api, _
 from odoo import Command
@@ -29,7 +28,7 @@ class RoomManagement(models.Model):
         ('partial', 'Partial'),
         ('full', 'Full'),
     ], string='Status', required=True, readonly=True, copy=False,
-        tracking=True, default='empty', compute="_compute_change_state",store=True)
+        tracking=True, default='empty', compute='_compute_change_state')
     facility_ids = fields.Many2many("hostel.facilities", string="Facilities", help="Select the allowed facilities")
     student_ids = fields.One2many('hostel.student', 'room_id', string='Students', readonly=True)
     total_rent = fields.Monetary(string="Total rent", compute='_onchange_total_room_rent',
@@ -40,6 +39,7 @@ class RoomManagement(models.Model):
     pending_amount = fields.Monetary(string='Pending amount', compute="_compute_pending_amount", store=True,
                                      help="Total amount from unpaid invoices")
     active = fields.Boolean(default=True)
+    image = fields.Binary(help="Set your image")
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -53,7 +53,6 @@ class RoomManagement(models.Model):
     @api.depends('no_of_beds', 'student_ids')
     def _compute_change_state(self):
         """state change """
-        print("Onchange")
         for record in self:
             student_length = len(record.student_ids)
             if student_length == 0:

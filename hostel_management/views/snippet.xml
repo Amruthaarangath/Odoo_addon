@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="room_snippet" inherit_id="website.snippets" name="Room snippet">
+<xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]"
+               position="after">
+            <t t-snippet="hostel_management.room_list"/>
+</xpath>
+</template>
+</odoo>

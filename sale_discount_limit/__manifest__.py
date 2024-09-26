@@ -8,6 +8,7 @@
     'data': [
               'views/config_settings_view.xml',
 
+
     ],
     'license': 'LGPL-3',
 }

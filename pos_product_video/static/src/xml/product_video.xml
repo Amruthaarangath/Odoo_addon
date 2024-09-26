@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_product_video.CustomButton"
+       t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension"
+       owl="1">
+       <xpath expr="//div[hasclass('product-img')]" position="before">
+           <div class="line">
+               <t t-if="this.props.video_file">
+                   <button class="product-video-logo fa fa-play" t-on-click="() =>this.videoClick()">
+                    <i role="img" aria-label="Product Video"
+                       title="Product video"/>
+                   </button>
+               </t>
+           </div>
+       </xpath>
+    </t>
+    <t t-name="pos_product_video.ProductsWidget"
+       t-inherit="point_of_sale.ProductsWidget" t-inherit-mode="extension"
+       owl="1">
+        <xpath expr="//ProductCard" position="attributes">
+            <attribute name="video_file">product.video_file</attribute>
+            <!--       <t t-log = "dfg"/>-->
+        </xpath>
+    </t>
+</templates>

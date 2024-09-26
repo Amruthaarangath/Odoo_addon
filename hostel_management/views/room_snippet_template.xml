@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="product_list" name="Dynamic Snippet">
-        <section class="container dynamic_snippet">
-            <h3 class="text-center">Product List</h3>
-            <div class="row">
-                <t t-foreach="data" t-as="product">
-                    <div class="p-3 col-md-3">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title text-center"
-                                    t-esc="product['product']"/>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-center"
-                                    t-esc="product['price']"/>
-                            </ul>
-                        </div>
-                    </div>
-                </t>
+    <template id="room_list" name="Room Snippet">
+        <section class="room_snippet">
+            <div id="room_snippet">
+                <h3 class="text-center">Rooms</h3>
             </div>
         </section>
     </template>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.Orderline"
+       t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('product-price')]" position="after">
+            <i t-on-click="removeLine" class="fa fa-times-circle" role="img" aria-label="Remove orderline"
+               title="Remove orderline" style="margin-left:10px;font-size:20px"/>
+<!--            <a href="#" role="button" class="col very-narrow delete-button p-2">-->
+<!--                <i class="fa fa-times-circle" style="margin-left:10px;font-size:20px;"/>-->
+<!--            </a>-->
+        </xpath>
+    </t>
+</templates>

@@ -42,6 +42,7 @@
                             <field name="room_number"/>
                         </h1>
                         <group>
+                            <field name='image' file_name = "file_name" widget="image" class="oe_avatar"/>
                             <field name="room_type"/>
                             <field name="no_of_beds"/>
                             <field name="total_rent"/>

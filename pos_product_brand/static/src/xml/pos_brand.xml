@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_product_brand.Orderline"
+  t-inherit="point_of_sale.Orderline" t-inherit-mode="extension"
+  owl="1">
+   <xpath expr="//div[hasclass('justify-content-between')]" position="after">
+       <div class="line">
+           <div class="subentry fs-6 text-muted">
+               <t t-if="line.brand">
+                   Brand:
+                   <span>
+                        <t t-esc="line.brand"/>
+                        <t t-log="pros"/>
+                   </span>
+               </t>
+           </div>
+       </div>
+   </xpath>
+</t>
+</templates>

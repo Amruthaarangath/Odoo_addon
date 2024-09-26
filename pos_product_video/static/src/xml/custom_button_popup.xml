@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="custom_popup.CustomButtonPopup" owl="1">
+        <div class="popup custom_popup">
+            <div class="modal-header justify-content-center">
+                <h2 class="modal-title">
+                    <t t-esc="props.title"/>
+                </h2>
+            </div>
+            <div class="modal-body custom-form-view">
+                    <iframe t-att-src="props.body" frameborder="0">
+                    </iframe>
+            </div>
+            <div class = "footer footer-flex modal-footer justify-content-end">
+                <div class="button cancel btn btn-lg btn-primary" t-on-click="cancel">
+                    <t t-esc="props.closePopup"/>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
