@@ -6,8 +6,10 @@
     'depends': ['base', 'payment'],
 
     'data': [
-                'views/multisafepay_view.xml',
-                # 'views/mrp_production_view.xml'
+                'views/payment_multisafepay_templates.xml',
+                'views/multisafepay_api_view.xml',
+                'data/payment_provider_data.xml',
+                # 'data/payment_method_data.xml'
         ],
 
     'license': 'LGPL-3',
