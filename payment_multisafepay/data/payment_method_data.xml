@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">
-
-<!--    <record id="payment_provider_multisafepay" model="payment.provider">-->
-<!--        <field name="code">multisafepay</field>-->
-<!--&lt;!&ndash;        <field name="redirect_form_view_id" ref="redirect_form"/>&ndash;&gt;-->
-<!--    </record>-->
-
-</odoo>

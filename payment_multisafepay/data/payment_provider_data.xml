@@ -3,8 +3,6 @@
     <record id="payment_multisafepay" model="payment.provider">
         <field name="name">Multisafepay</field>
         <field name="code">multisafepay</field>
-<!--        <field name="company_id" ref="base.main_company"/>-->
-<!--        <field name="country_id" ref="base.in"/>-->
         <field name="module_id" ref="base.module_payment_multisafepay"/>
         <field name="payment_method_ids"
                eval="[(6, 0, [

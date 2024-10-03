@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import pprint
 
 import requests
 from werkzeug import urls
 
-from odoo import _, fields, models, service
-
-from .. import const
+from odoo import _, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -26,10 +23,8 @@ class PaymentProvider(models.Model):
     )
 
     def _multisafepay_make_request(self, endpoint, data=None, method='POST'):
-        print("hyy")
         self.ensure_one()
-        url = urls.url_join(f"https://testapi.multisafepay.com/v1/json/orders?api_key={self.api_key}",'')
-
+        url = urls.url_join(f"https://testapi.multisafepay.com/v1/json/orders?api_key={self.api_key}", '')
         headers = {
             'Content-Type': 'application/json',
             'accept': 'application/json'
