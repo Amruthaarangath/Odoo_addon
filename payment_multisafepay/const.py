@@ -51,12 +51,12 @@ SUPPORTED_CURRENCIES = [
 DEFAULT_PAYMENT_METHODS_CODES = [
     # Primary payment methods.
     'card',
-    # 'ideal',
-    # # Brand payment methods.
-    # 'visa',
-    # 'mastercard',
-    # 'amex',
-    # 'discover',
+    'ideal',
+    # Brand payment methods.
+    'visa',
+    'mastercard',
+    'amex',
+    'discover',
 ]
 
 # Mapping of payment method codes to Mollie codes.

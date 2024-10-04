@@ -23,6 +23,15 @@ class PaymentProvider(models.Model):
     )
 
     def _multisafepay_make_request(self, endpoint, data=None, method='POST'):
+        """ Make a request at multisafepay endpoint.
+
+        Note: self.ensure_one()
+
+        :param dict data: The payload of the request
+        :param str method: The HTTP method of the request
+        :return The JSON-formatted content of the response
+        :rtype: dict
+               """
         self.ensure_one()
         url = urls.url_join(f"https://testapi.multisafepay.com/v1/json/orders?api_key={self.api_key}", '')
         headers = {

@@ -19,6 +19,14 @@ class PaymentTransaction(models.Model):
     _inherit = 'payment.transaction'
 
     def _get_specific_rendering_values(self, processing_values):
+        """ Override of payment to return Mollie-specific rendering values.
+
+            Note: self.ensure_one() from `_get_processing_values`
+
+            :param dict processing_values: The generic and specific processing values of the transaction
+            :return: The dict of provider-specific rendering values
+            :rtype: dict
+            """
         res = super()._get_specific_rendering_values(processing_values)
         if self.provider_code != 'multisafepay':
             return res
@@ -35,6 +43,11 @@ class PaymentTransaction(models.Model):
         return {'api_url': checkout_url, 'url_params': url_params}
 
     def _multisafepay_prepare_payment_request_payload(self):
+        """ Create the payload for the payment request based on the transaction values.
+
+          :return: The request payload
+          :rtype: dict
+          """
         user_lang = self.env.context.get('lang')
         base_url = self.provider_id.get_base_url()
         redirect_url = urls.url_join(base_url, MultisafepayController._return_url)
@@ -109,7 +122,6 @@ class PaymentTransaction(models.Model):
         payment_data = response.json()
 
         # Update the payment state.
-        print("payment data", payment_data)
         payment_status = payment_data['data']['status']
         if payment_status == 'completed':
             self._set_done()
