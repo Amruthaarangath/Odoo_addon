@@ -6,11 +6,11 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header/field[@name='state']" position="replace">
-                <field name="state" widget="statusbar" statusbar_visible="draft,sent,to_approve,second_approval,sale"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,sent,sale"/>
             </xpath>
             <xpath expr="//header/field[@name='state']" position="before">
-                <button string="Approve" type="object" class="oe_highlight" name="approve_button" groups="spotter_sale_order_approval.group_sale_salesman_all_leads"/>
-<!--                <button string="Second Approval"  type="object" class="oe_highlight" name="second_approval_button" groups="sale.group_sale_manager"/>-->
+                <button string="Approve" type="object" class="oe_highlight" invisible="state not in ('to_approve')" name="approve_button" groups="sales_team.group_sale_manager"/>
+                <button string="Second Approval"  type="object" class="oe_highlight" invisible="state not in ('second_approval')" name="second_approval_button" groups="sales_team.group_sale_salesman"/>
             </xpath>
         </field>
     </record>

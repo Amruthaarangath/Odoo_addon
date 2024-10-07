@@ -12,15 +12,15 @@ class SaleOrder(models.Model):
         selection_add=[('to_approve', 'To Approve'),('second_approval','Second Approval')]
     )
 
-    @api.constrains('amount_total')
-    def _total_amount_calculation(self):
-        if self.amount_total > 25000:
-            self.state = "to_approve"
-
+    def action_confirm(self):
+        print("hyyy")
+        res = super(SaleOrder, self).action_confirm()
+        for record in self:
+            if record.state == "draft" or record.amount_total >= 25000:
+                record.state = "to_approve"
+        return res
 
     def approve_button(self):
-        print("hy")
-        print("hy", self.amount_total)
         self.state = "second_approval"
 
 

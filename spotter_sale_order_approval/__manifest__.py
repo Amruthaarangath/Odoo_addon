@@ -7,7 +7,7 @@
 
 'data': [
               'views/sale_order_view.xml',
-
+              'views/config_settings_views.xml'
 
     ],
 
