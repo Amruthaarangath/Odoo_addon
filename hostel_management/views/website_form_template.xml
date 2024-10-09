@@ -24,7 +24,6 @@
                                         <option t-att-value="room_id.id">
                                             <t t-esc="room_id.room_number"/>
                                         </option>
-
                                     </t>
                                 </select>
 

@@ -18,7 +18,6 @@ import { jsonrpc } from "@web/core/network/rpc_service";
 
     }).then(function (records) {
         self.$el.find('#state_id').empty();
-        console.log("abc")
         self.$el.find('#state_id').prepend('<option value="">Select State</option>');
         records.forEach(function (record) {
         self.$('#state_id').append(`<option value="${record.id}">${record.name}</option>`);

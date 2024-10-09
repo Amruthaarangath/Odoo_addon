@@ -11,33 +11,24 @@ class SaleOrder(models.Model):
     state = fields.Selection(
         selection_add=[('to_approve', 'To Approve'),('second_approval','Second Approval')]
     )
-    current_user = fields.Many2one('res.users',compute = "_compute_current_user")
-    current_first_approver = fields.Char(compute = "_compute_partner_approval")
-    current_second_approver = fields.Char(compute = "_compute_partner_approval")
-
-    def _compute_current_user(self):
-        self.current_user = self.env.user
-        print(self.current_user,"userrr")
+    first_user = fields.Char(compute = "_compute_partner_approval")
+    second_user = fields.Char(compute = "_compute_partner_approval")
 
     def _compute_partner_approval(self):
-        self.current_first_approver = self.env['ir.config_parameter'].sudo().get_param('spotter_sale_order_approval.first_user_ids') or False
-        self.current_second_approver = self.env['ir.config_parameter'].sudo().get_param('spotter_sale_order_approval.second_user_ids') or False
-        # self.current_user = self.env.user
-        # for user in first_approver:
-        #     if user == self.current_user.user_id:
-        #         self.current_first_approver = user
-        #         print("crct")
-        #     print(user,"tttt")
-        # print(self.current_user, "userrr")
-        # first = self.current_first_approver
-        # user = self.current_user
+        first_approver = self.env['ir.config_parameter'].sudo().get_param('spotter_sale_order_approval.first_user_ids') or False
+        second_approver = self.env['ir.config_parameter'].sudo().get_param('spotter_sale_order_approval.second_user_ids') or False
+        user = str(self.env.user.id)
 
-        # print("first",first_approver)
-        print("first",self.current_first_approver)
-        print("second",self.current_second_approver)
+        if user in first_approver:
+            self.first_user = '1'
+        else:
+            self.first_user = '0'
+        if user in second_approver:
+            self.second_user = '1'
+        else:
+            self.second_user = '0'
 
     def action_confirm(self):
-        print("hyyy")
         res = super(SaleOrder, self).action_confirm()
         for record in self:
             if record.state == "draft" or record.amount_total >= 25000:

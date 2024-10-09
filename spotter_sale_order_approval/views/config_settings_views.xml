@@ -14,14 +14,6 @@
                     <field name="is_sale_order_approve"/>
                     <div class="content-group"
                          invisible="not is_sale_order_approve">
-<!--                        <div class="mt16">-->
-<!--                            <label for="first_user"/>-->
-<!--                            <field name="first_user" widget="many2many_tags"/>-->
-<!--                        </div>-->
-<!--                        <div class="mt16">-->
-<!--                            <label for="second_user"/>-->
-<!--                            <field name="second_user" widget="many2many_tags"/>-->
-<!--                        </div>-->
                     </div>
                 </setting>
             </xpath>

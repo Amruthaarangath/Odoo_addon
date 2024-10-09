@@ -33,5 +33,5 @@ class ResConfigSettings(models.TransientModel):
         second_user = with_user.get_param('spotter_sale_order_approval.second_user_ids')
         res.update(second_user_ids=[(6, 0, literal_eval(second_user))
                                      ] if second_user else False, )
-        # # res.update({'second_user_ids': with_user})
         return res
+
