@@ -11,7 +11,7 @@
 
     ],
 'assets': {
-        'web.assets_backend': [
+        'web.assets_frontend': [
             'website_decimal_quantity/static/src/js/website_decimal_quantity.js'
         ],
     },
